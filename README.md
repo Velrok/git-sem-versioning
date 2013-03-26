@@ -1,6 +1,6 @@
 # git-sem-versioning
 
-A very tiny python tool, that lets you easily increment and tag the current version (major, minor or patch).
+A very tiny python tool, that lets you easily create new git tags (major, minor or patch) based on the current version.
 
 # usage
 
