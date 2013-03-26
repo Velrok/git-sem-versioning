@@ -20,7 +20,7 @@ def parse_version_str(ver_str):
         raise Exception("""Invalid version. First character should be a v
             got {} instead.""".format(first))
 
-    return map(int, rest.strip().split("."))
+    return Version(rest.strip())
 
 
 def get_versions():
@@ -38,22 +38,28 @@ def latest(versions):
 
 
 def inc_major(version):
-    major, minor, patch = version
-    return (major + 1, 0, 0)
+    v = Version(str(version))
+    v.major = version.major + 1
+    v.minor = 0
+    v.patch = 0
+    return v
 
 
 def inc_minor(version):
-    major, minor, patch = version
-    return (major, minor + 1, 0)
+    v = Version(str(version))
+    v.minor = v.minor + 1
+    v.patch = 0
+    return v
 
 
 def inc_patch(version):
-    major, minor, patch = version
-    return (major, minor, patch + 1)
+    v = Version(str(version))
+    v.patch = v.patch + 1
+    return v
 
 
 def version_to_str(version):
-    return "v" + ".".join(map(str, version))
+    return "v" + str(version)
 
 
 def init_versioning():
