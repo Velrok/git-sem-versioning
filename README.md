@@ -1,6 +1,6 @@
 # git-sem-versioning
 
-A very tiny python tool, that lets you easily increment and tag the current version (major, minor or patch).
+A very tiny python tool, that lets you easily create new git tags (major, minor or patch) based on the current version.
 
 # usage
 
@@ -18,6 +18,11 @@ Usage:
 - python 2.7
 	- [docopt](http://docopt.org/)
 	- [sh](http://amoffat.github.com/sh/)
+	- [semantic_version](https://github.com/rbarrois/python-semanticversion)
+
+for testing
+
+- [nosetest](https://nose.readthedocs.org/en/latest/)
 
 # install
 
