@@ -3,7 +3,8 @@ from version import *
 
 
 def test_parses_valid_versions():
-    eq_(list(parse_version_str("v1.2.3")), [1, 2, 3])
+    version = list(parse_version_str("v1.2.3"))
+    eq_(version[:3], [1, 2, 3])
 
 
 def test_parse_version_enforces_v_prefix():
