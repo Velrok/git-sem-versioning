@@ -7,12 +7,9 @@ def test_parses_valid_versions():
     eq_(version[:3], [1, 2, 3])
 
 
+@raises(Exception)
 def test_parse_version_enforces_v_prefix():
-    try:
-        parse_version_str("1.2.3")
-        assert(False)
-    except Exception:
-        assert(True)
+    parse_version_str("1.2.3")
 
 
 def test_version_to_str_uses_v_prefix():
