@@ -4,7 +4,13 @@ A very tiny python tool, that lets you easily increment and tag the current vers
 
 # usage
 
-See: `version -h`
+```
+Manages versions via git tags.
+
+Usage:
+    version current
+    version new (major | minor | patch)
+```
 
 # dependencies
 
