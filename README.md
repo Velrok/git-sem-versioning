@@ -18,6 +18,11 @@ Usage:
 - python 2.7
 	- [docopt](http://docopt.org/)
 	- [sh](http://amoffat.github.com/sh/)
+	- [semantic_version](https://github.com/rbarrois/python-semanticversion)
+
+for testing
+
+- [nosetest](https://nose.readthedocs.org/en/latest/)
 
 # install
 

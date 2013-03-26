@@ -10,6 +10,7 @@ Usage:
 from sh import git, ErrorReturnCode, ErrorReturnCode_128
 from docopt import docopt
 import sys
+from semantic_version import Version
 
 
 def parse_version_str(ver_str):
