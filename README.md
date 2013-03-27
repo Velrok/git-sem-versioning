@@ -9,7 +9,7 @@ Manages versions via git tags.
 
 Usage:
     version current
-    version new (major | minor | patch)
+    version inc (major | minor | patch)
 ```
 
 # dependencies

@@ -4,7 +4,7 @@
 
 Usage:
     version current
-    version new (major | minor | patch)
+    version inc (major | minor | patch)
 
 """
 from sh import git, ErrorReturnCode, ErrorReturnCode_128
@@ -67,6 +67,27 @@ def init_versioning():
     git("tag", "v0.0.0", "-a")
 
 
+def sub_command_current(latest_version):
+    print version_to_str(latest_version)
+    sys.exit()
+
+
+def sub_command_inc(latest_version, args):
+    new_version = None
+    if(args['major']):
+        new_version = inc_major(latest_version)
+    elif(args['minor']):
+        new_version = inc_minor(latest_version)
+    elif(args['patch']):
+        new_version = inc_patch(latest_version)
+
+    try:
+        git("tag", version_to_str(new_version), "-a")
+        sys.exit(0)
+    except ErrorReturnCode_128:
+        print "Version increment aborted with empty message."
+
+
 if __name__ == '__main__':
     args = docopt(__doc__)
 
@@ -87,19 +108,7 @@ if __name__ == '__main__':
     else:
         latest_version = latest(versions)
 
-        if(args['current']):
-            print version_to_str(latest_version)
-            sys.exit()
-
-        new_version = None
-        if(args['major']):
-            new_version = inc_major(latest_version)
-        elif(args['minor']):
-            new_version = inc_minor(latest_version)
-        elif(args['patch']):
-            new_version = inc_patch(latest_version)
-
-        try:
-            git("tag", version_to_str(new_version), "-a")
-        except ErrorReturnCode_128:
-            print "Version increment aborted with empty message."
+        if args['current']:
+            sub_command_current(latest_version)
+        elif args['inc']:
+            sub_command_inc(latest_version, args)
