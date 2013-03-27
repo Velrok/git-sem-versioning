@@ -26,6 +26,7 @@ def parse_version_str(ver_str):
 def get_versions():
     version_lines = git("tag", "-l").split("\n")
     version_lines = filter(lambda x: len(x) > 0, version_lines)
+    version_lines = filter(lambda x: x[0] == 'v', version_lines)
 
     if len(version_lines) == 0:
         return []
@@ -76,7 +77,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     if len(versions) == 0:
-        print "No tags found. Will init with v0.0.0"
+        print "No sem version tags found. Will init with v0.0.0"
         print "Leave an empty message to cancel."
         try:
             init_versioning()
